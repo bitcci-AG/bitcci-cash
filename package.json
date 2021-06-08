@@ -1,0 +1,43 @@
+{
+  "name": "utility-token",
+  "version": "1.0.0",
+  "description": "Solidity Smart Contracts for Utility Token",
+  "main": "index.js",
+  "scripts": {
+    "test": "truffle test",
+    "migrate": "truffle migrate",
+    "reset": "truffle migrate --reset",
+    "lint:js": "eslint test/** migrations/**",
+    "lint:sol": "solhint contracts/*.sol contracts/*/*.sol test/*.sol",
+    "lint": "npm run lint:js && npm run lint:sol",
+    "setup:surya": "npm install -g surya && brew install graphviz"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "@openzeppelin/test-helpers": "^0.5.11",
+    "@truffle/hdwallet-provider": "^1.0.44",
+    "bn.js": "^4.11.8"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "csv-parse": "^4.3.4",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-react": "^7.5.1",
+    "fs": "0.0.1-security",
+    "get-stream": "^5.0.0",
+    "minimist": "^1.2.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-solidity": "^1.0.0-alpha.58",
+    "solhint": "^3.3.6",
+    "solhint-plugin-prettier": "0.0.5",
+    "solidity-coverage": "^0.7.16"
+  }
+}
