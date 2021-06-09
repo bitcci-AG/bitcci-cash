@@ -10,6 +10,7 @@ The **bitcci cash** token is a payment token, which can be used as a currency to
 ## About bitcci: 
 bitcci has united the sex industry with the new blockchain world.
 The **bitcci Group AG** is made up of a group of public stock companies located in the cryptovalley of Lichtenstein and Switzerland. Founded by **Christoph Elbert** in 2017, the **bitcci Group AG** is building an entirely new global ecosystem for the next-generation sex industry,  eliminating problems and making the industry legal, safe and free.
+The **bitcci AG**, a 100% subsidiary of the bitcci Group AG, located in Zug, Switzerland, has developed the bitcci cash token and executes the token emission in 2021.
 
 learn more about bitcci Cash Smart Contracts :
 
