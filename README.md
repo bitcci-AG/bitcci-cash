@@ -15,4 +15,4 @@ learn more about bitcci Cash Smart Contracts :
 
 [Smart Contract Specifications](docs/SPECS.md) \
 [Development](docs/DEVELOPMENT.md) \
-[Surya Static Analysis Graphs](docs/images/graph.svg)
+[Surya Static Analysis Graphs](docs/images/)
