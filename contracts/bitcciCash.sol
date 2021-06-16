@@ -119,7 +119,8 @@ contract bitcciCash is Context, AccessControlEnumerable, ERC20Burnable, ERC20Pau
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override(ERC20, ERC20Pausable) {
-         require(!(hasRole(BLACKLISTED_ROLE, msg.sender)), "bitcciCash: account is Blacklisted");
+         require(!(hasRole(BLACKLISTED_ROLE, msg.sender)), "bitcciCash: sender is Blacklisted");
+         require(!(hasRole(BLACKLISTED_ROLE, to)),"bitcciCash: receiver is Blacklisted");
         super._beforeTokenTransfer(from, to, amount);
     }
 }
