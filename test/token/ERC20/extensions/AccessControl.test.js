@@ -6,7 +6,7 @@ const { expect } = require('chai');
 const bitcciCash = artifacts.require('bitcciCash');
 
 contract('bitcciCash', function (accounts) {
-  const [ deployer,blacklisted, other, other2 ] = accounts;
+  const [ deployer,blacklisted,newMinter, other, other2 ] = accounts;
 
   const name = 'bitcci Cash';
   const symbol = 'bitcci';
@@ -111,7 +111,15 @@ contract('bitcciCash', function (accounts) {
     await this.token.addBlackListed(blacklisted, {from: deployer});
 
     await expectRevert(this.token.transfer(
-        other2, amount, { from: blacklisted }), 'bitcciCash: account is Blacklisted',
+        other2, amount, { from: blacklisted }), 'bitcciCash: sender is Blacklisted',
+    );
+  });
+
+  it('reverts when trying to transfer to blacklisted address', async function () {
+    await this.token.addBlackListed(blacklisted, {from: deployer});
+
+    await expectRevert(this.token.transfer(
+      blacklisted, amount, { from: deployer }), 'bitcciCash: receiver is Blacklisted',
     );
   });
   it('blacklisted Address can not renounce its role', async function () {
@@ -130,6 +138,27 @@ contract('bitcciCash', function (accounts) {
   });
   
 });
+
+describe('granting', function () {
+  beforeEach(async function () {
+    await this.token.grantRole(MINTER_ROLE, newMinter, { from: deployer });
+  });
+
+  it('minter role should have been granted successfuly', async function () {
+   
+    expect(await this.token.getRoleMemberCount(MINTER_ROLE)).to.be.bignumber.equal('2');
+    expect(await this.token.getRoleMember(MINTER_ROLE, 1)).to.equal(newMinter);
+    
+  });
+
+  it('roles other than blacklisted role can be renounced', async function () {
+    const receipt = await this.token.renounceRole(MINTER_ROLE, newMinter, { from: newMinter });
+    expectEvent(receipt, 'RoleRevoked', { account: newMinter, role: MINTER_ROLE, sender: newMinter });
+
+    expect(await this.token.hasRole(MINTER_ROLE, newMinter)).to.equal(false);
+  });
+});
+
 
   describe('burning', function () {
     it('holders can burn their tokens', async function () {
