@@ -37,7 +37,7 @@ contract bitcciCash is Context, AccessControlEnumerable, ERC20Burnable, ERC20Pau
      * @dev Sets the value of the `cap`. This value is immutable, it can only be
      * set once during construction.
      */
-    constructor(string memory name, string memory symbol, uint8 decimals_,uint256 cap_) ERC20(name, symbol) {
+    constructor(string memory bitcciCashName, string memory bitcciCashSymbol, uint8 decimals_,uint256 cap_) ERC20(bitcciCashName, bitcciCashSymbol) {
          require(cap_ > 0, "ERC20Capped: cap is 0");
         _cap = cap_;
         _decimals = decimals_;
